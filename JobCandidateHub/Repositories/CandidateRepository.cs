@@ -14,8 +14,8 @@ namespace JobCandidateHub.Repositories
         {
             _context = context;
             _cache = cache;
-        }
-
+        } 
+      
         public async Task<Candidate> GetByEmailAsync(string email)
         {
             if (string.IsNullOrWhiteSpace(email))

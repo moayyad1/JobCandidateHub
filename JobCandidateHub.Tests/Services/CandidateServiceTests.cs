@@ -8,6 +8,7 @@ using JobCandidateHub.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace JobCandidateHub.Tests.Services
 {
@@ -16,6 +17,7 @@ namespace JobCandidateHub.Tests.Services
     {
         private CandidateService _candidateService;
         private CandidateContext _context;
+        private IMemoryCache _cache;
 
         [TestInitialize]
         public void TestInitialize()
@@ -28,8 +30,8 @@ namespace JobCandidateHub.Tests.Services
             _context.Database.EnsureCreated();
             _context.Candidates.RemoveRange(_context.Candidates);
             _context.SaveChanges();
-
-            var repository = new CandidateRepository(_context);
+            _cache = new MemoryCache(new MemoryCacheOptions());
+            var repository = new CandidateRepository(_context, _cache);
             var config = new MapperConfiguration(cfg => cfg.AddProfile<CandidateProfile>());
             var mapper = config.CreateMapper();
 
