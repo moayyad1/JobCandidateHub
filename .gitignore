@@ -1,0 +1,37 @@
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore logs
+*.log
+*.tlog
+
+# Ignore auto-generated files
+.vscode/
+.DS_Store
+
+# Ignore node_modules for frontend projects
+node_modules/
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+.vs/
+
+# Ignore test results
+TestResults/
+
+# Ignore coverage reports
+coverage/
+coverage.info
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
